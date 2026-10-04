@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<title>Pong 🏓</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Pantalla de inicio / lobby -->
+  <div id="lobby" class="screen">
+    <div class="card">
+      <h1>🏓 Pong</h1>
+      <p class="subtitle">El clásico, pero online</p>
+      <input id="nameInput" maxlength="14" placeholder="Tu nombre" />
+      <div class="row">
+        <button id="btnCreate" class="btn primary">Crear partida</button>
+      </div>
+      <div class="divider">o únete con un código</div>
+      <div class="row">
+        <input id="codeInput" maxlength="4" placeholder="CÓDIGO" />
+        <button id="btnJoin" class="btn">Unirse</button>
+      </div>
+      <p id="lobbyError" class="error"></p>
+    </div>
+  </div>
+
+  <!-- Esperando rival -->
+  <div id="waiting" class="screen hidden">
+    <div class="card">
+      <div class="spinner"></div>
+      <h2>Waiting for player...</h2>
+      <p>Comparte el código:</p>
+      <div id="showCode" class="big-code"></div>
+    </div>
+  </div>
+
+  <!-- Juego -->
+  <div id="game" class="hidden">
+    <div id="topbar">
+      <span id="p1name"></span>
+      <span id="scoreboard"><span id="s1">0</span> : <span id="s2">0</span></span>
+      <span id="p2name"></span>
+    </div>
+    <canvas id="canvas" width="800" height="500"></canvas>
+    <div id="statusMsg"></div>
+    <div id="chatBox">
+      <div id="chatLog"></div>
+      <div class="row">
+        <input id="chatInput" maxlength="140" placeholder="Mensaje..." />
+        <button id="btnChat" class="btn small">Enviar</button>
+      </div>
+    </div>
+    <button id="btnRematch" class="btn primary hidden">🔁 Revancha</button>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
